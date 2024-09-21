@@ -1,0 +1,5 @@
+git add .
+
+git commit -m "{날짜} commit"
+
+git push origin master
