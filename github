@@ -2,4 +2,11 @@ git add .
 
 git commit -m "{날짜} commit"
 
-git push origin master  
+git push origin main  
+
+
+git add .
+
+git commit -m "20241019 commit"
+
+git push origin main  

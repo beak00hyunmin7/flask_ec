@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from apps.app import db
 from apps.crud.models import User
 from apps.crud.forms import UserForm
-
+from flask_login import login_required
 
 #blueprint로 curd 앱을 생성
 crud = Blueprint(
@@ -11,7 +11,8 @@ crud = Blueprint(
     static_folder = "static"
 )   
 
-@crud.route("/")
+@crud.route("/")    
+@login_required
 def index():
     return render_template("crud/index.html")
 
@@ -34,6 +35,7 @@ def sql():
 
 
 @crud.route('/user/new', methods = ["GET", "POST"])
+@login_required
 def create_user():
     form = UserForm()
     if form.validate_on_submit():
@@ -54,6 +56,7 @@ def users():
     return render_template('crud/index.html', users = users)
 
 @crud.route('/users/<user_id>',methods=["GET","POST"])
+@login_required 
 def edit_user(user_id):
     form = UserForm()
     user = User.query.filter_by(id=user_id).first()
