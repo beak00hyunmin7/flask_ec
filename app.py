@@ -10,7 +10,7 @@ db = SQLAlchemy()
 csrf = CSRFProtect()
 
 login_manager = LoginManager()
-login_manager.login_view = "login.singup"
+login_manager.login_view = "login.signup"
 login_manager.login_message = ""
 
 def create_app(config_key):
