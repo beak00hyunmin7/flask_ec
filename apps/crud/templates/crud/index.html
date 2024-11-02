@@ -2,6 +2,8 @@
 {% block title %}사용자 일람{% endblock %}
 
 {% block content %}
+<link rel = "stylesheet" href = "{{url_for('crud.static', filename = 'style.css')}}"/>
+<div class = "crud">
     <h2>사용자 일람</h2>
     <a href="{{ url_for('crud.create_user')}}">사용자 신규 작성</a>
     <table>
@@ -18,4 +20,5 @@
             </tr>
         {% endfor %}
     </table>
+</div>
 {% endblock %}

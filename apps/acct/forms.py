@@ -28,3 +28,22 @@ class SignUpForm(FlaskForm):
     )
     
     submit = SubmitField("신규등록")
+
+
+class LoginForm(FlaskForm):
+    email = StringField(   #StringField = 문자열을 넣을 수 있는..
+        "메일주소",
+        validators=[
+            DataRequired(message="메일주소는 필수입니다."),
+            Email(message="메일주소 형식으로 입력해주세요.") #이메일 형식 유효성 검사
+        ]
+    )
+
+    password = PasswordField(
+        "비밀번호",
+        validators=[
+            DataRequired(message="비밀번호는 필수입니다.")
+        ]
+    )
+    
+    submit = SubmitField("로그인")

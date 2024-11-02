@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String, index = True)
     email = db.Column(db.String, index = True)
     # userid = db.Column(db.String, index = True)
-    password = db.Column(db.String)
+    password_hash = db.Column(db.String)
     create_at = db.Column(db.DateTime, default = datetime.now)  
     update_at = db.Column(db.DateTime, default = datetime.now, onupdate = datetime.now)
 
@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
     def password(self, password):
         self.password_hash = generate_password_hash(password)
     #비밀번호 확인 메서드
-    def verity_password(self, password):
+    def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
     
     def is_duplicate_email(self):
