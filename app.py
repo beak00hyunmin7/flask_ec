@@ -40,8 +40,12 @@ def create_app(config_key):
     from apps.acct import views as acct_views
     app.register_blueprint(acct_views.acct, url_prefix = "/acct")
 
-    #login 앱 연결
+    #main 앱 연결
     from apps.main import views as main_views
     app.register_blueprint(main_views.main, url_prefix = "/main")
+
+    #board 앱 연결
+    from apps.board import views as board_views
+    app.register_blueprint(board_views.board, url_prefix = "/board")
     
     return app
